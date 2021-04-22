@@ -7,6 +7,7 @@ import Layout, {
   NavPlug } from "Components/Layout"
 import Nav from "Components/Nav"
 import ROUTES from "Scenes/constants"
+import Blog from "Containers/Blog"
 import CatalogueRoute from "./Catalogue"
 import MovieRoute from "./Movie"
 import LoremRoute from "./Lorem"
@@ -32,22 +33,25 @@ const App = _ => (
           </Nav>
         </NavPlug>
 
-        <Switch>
-          <CatalogueRoute path={`${path}${ROUTES.CATALOGUE}`}/>
+        <Blog>          
+          <Switch>
+            <CatalogueRoute path={`${path}${ROUTES.CATALOGUE}`}/>
 
-          <MovieRoute path={`${path}${ROUTES.MOVIE}`} />
+            <MovieRoute path={`${path}${ROUTES.MOVIE}`} />
 
-          <LoremRoute path={`${path}${ROUTES.LOREM}`} />
+            <LoremRoute path={`${path}${ROUTES.LOREM}`} />
 
-          <IpsumRoute path={`${path}${ROUTES.IPSUM}`} />
+            <IpsumRoute path={`${path}${ROUTES.IPSUM}`} />
 
-          <DolorRoute path={`${path}${ROUTES.DOLOR}`} />
+            <DolorRoute path={`${path}${ROUTES.DOLOR}`} />
 
-          <Redirect
-            exact
-            to={`${path}${ROUTES.CATALOGUE}`}
-          />
-        </Switch>
+            <Redirect
+              exact
+              to={`${path}${ROUTES.CATALOGUE}`}
+            />
+          </Switch>
+        </Blog>
+
       </Layout>
     )}
   />

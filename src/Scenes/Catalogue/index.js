@@ -2,10 +2,8 @@ import React from "react"
 import Grid from "@material-ui/core/Grid"
 import Typography from "@material-ui/core/Typography"
 import { HeaderPlug } from "Components/Layout"
-import SearchForm, {
-  SearchField,
-  SearchGrid } from "Containers/SearchForm"
 import { Route } from "react-router-dom"
+import Blog, { BlogList } from "Containers/Blog"
 
 
 const CatalogueRoute = ({ path }) => (
@@ -19,19 +17,9 @@ const CatalogueRoute = ({ path }) => (
           </Typography>
         </ HeaderPlug>
 
-        <SearchForm>
-          <Grid container spacing={4}>
-
-            <Grid item sm={12}>
-              <SearchField />
-            </Grid>
-
-            <Grid item sm={12}>
-              <SearchGrid />
-            </Grid>
-
-          </Grid>
-        </SearchForm>
+        <Grid item sm={12}>
+          <BlogList />
+        </Grid>
       </>
     )}
   />
