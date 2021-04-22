@@ -1,5 +1,6 @@
 import React from "react"
 import Grid from "@material-ui/core/Grid"
+import Typography from "@material-ui/core/Typography"
 import { HeaderPlug } from "Components/Layout"
 import SearchForm, {
   SearchField,
@@ -13,7 +14,9 @@ const CatalogueRoute = ({ path }) => (
     render={_ => (
       <>
         <HeaderPlug>
-          Catalogue
+          <Typography variant="h5">
+            Catalogue
+          </Typography>
         </ HeaderPlug>
 
         <SearchForm>

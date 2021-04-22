@@ -1,6 +1,7 @@
 import React from "react"
 import { HeaderSlot,
-  FooterSlot } from "./slots"
+  FooterSlot,
+  NavSlot } from "./slots"
 import AppBar from "@material-ui/core/AppBar"
 import Typography from "@material-ui/core/Typography"
 import Container from "@material-ui/core/Container"
@@ -30,6 +31,9 @@ const Layout = ({ children }) => {
         variant="subtitle1"
       >
         <HeaderSlot />
+
+        <NavSlot />
+
       </Typography>
 
     </AppBar>

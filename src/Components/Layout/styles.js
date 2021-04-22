@@ -10,6 +10,7 @@ const useStyles = makeStyles(theme => ({
       "padding": theme.spacing(3, 5),
       "display": "flex",
       "flex-direction": "row",
+      "flex-wrap": "nowrap",
       "align-items": "center"
     },
     logo: {
@@ -18,6 +19,9 @@ const useStyles = makeStyles(theme => ({
     },
     title: {
       "padding": theme.spacing(0, 2),
+      "display": "flex",
+      "flex-direction": "row",
+      "justify-content": "space-between",
       "flex": "1"
     },
     main: {

@@ -1,7 +1,10 @@
 const ROUTES = {
   INDEX: "/",
   CATALOGUE: "catalogue",
-  MOVIE: "movie"
+  MOVIE: "movie",
+  LOREM: "lorem",
+  IPSUM: "ipsum",
+  DOLOR: "dolor"
 }
 
 

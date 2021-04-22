@@ -1,2 +1,5 @@
 export { default } from "./Layout"
-export { HeaderPlug, MainPlug, FooterPlug } from "./slots"
+export { HeaderPlug,
+  MainPlug,
+  FooterPlug,
+  NavPlug } from "./slots"
