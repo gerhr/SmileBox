@@ -7,7 +7,8 @@ import Layout, {
   NavPlug } from "Components/Layout"
 import Nav from "Components/Nav"
 import ROUTES from "Scenes/constants"
-import Blog from "Containers/Blog"
+import Blog, {
+  NewPostForm } from "Containers/Blog"
 import CatalogueRoute from "./Catalogue"
 import MovieRoute from "./Movie"
 import LoremRoute from "./Lorem"
@@ -33,7 +34,7 @@ const App = _ => (
           </Nav>
         </NavPlug>
 
-        <Blog>          
+        <Blog>
           <Switch>
             <CatalogueRoute path={`${path}${ROUTES.CATALOGUE}`}/>
 
@@ -50,6 +51,9 @@ const App = _ => (
               to={`${path}${ROUTES.CATALOGUE}`}
             />
           </Switch>
+
+          <NewPostForm />
+
         </Blog>
 
       </Layout>

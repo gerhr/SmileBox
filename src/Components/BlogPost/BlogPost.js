@@ -3,7 +3,7 @@ import Box from "@material-ui/core/Box"
 import Avatar from "@material-ui/core/Avatar"
 import Typography from "@material-ui/core/Typography"
 import Divider from "@material-ui/core/Divider"
-import hrt from "human-readable-time"
+import prettyMs from "pretty-ms"
 import useStyles from "./styles"
 import Chip from "@material-ui/core/Chip"
 
@@ -27,19 +27,21 @@ export default ({
 
           <Typography className={classes.userName} variant="subtitle">{author}</Typography>
 
-          <Typography className={classes.date} variant="body2">{hrt(publishedDate)}</Typography>
+          <Typography className={classes.date} variant="body2">{prettyMs(publishedDate)}</Typography>
         </Box>
 
-        <Box className>
-          <Chip label={cathegory}/>
-        </Box>
+        { cathegory &&
+          <Box className>
+            <Chip label={cathegory}/>
+          </Box>
+        }
       </Box>
 
 
       <Typography className={classes.header} variant="h4">{header}</Typography>
 
       { lastChangeDate &&
-        <Typography variant="body2">{hrt(lastChangeDate)}</Typography>
+        <Typography variant="body2">{prettyMs(lastChangeDate)}</Typography>
       }
 
       <Box className={classes.body}>

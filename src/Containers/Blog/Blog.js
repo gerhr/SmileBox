@@ -1,8 +1,9 @@
 import React, {
-  useCallback,
-  useReducer } from "react"
+  useCallback } from "react"
+import faker from "faker"
 import createPersistedReducer from "use-persisted-reducer"
 import BlogContext from "./context"
+import uniqid from "uniqid"
 import {
   CREATE,
   UPDATE,
@@ -13,14 +14,22 @@ import initialState from "./initialState"
 const usePersistedReducer = createPersistedReducer('state');
 
 
-const blogReducer = (action, state) => {
-    switch (action.type) {
+const blogReducer = (state, { type, payload }) => {
+    switch (type) {
 
       case CREATE:
-        // #TODO Generate new id
-        // #TODO Push data to storage
-        console.log("create post")
-        return state;
+
+        return {
+          ...state,
+          [uniqid()]: {
+            publishedDate: Date.now(),
+            author: faker.internet.userName(),
+            lastChangeDate: null,
+            header: payload.header,
+            cathegory: payload.cathegory,
+            body: payload.body
+          }
+        };
 
       case UPDATE:
         // #TODO Pick post by id
@@ -44,17 +53,12 @@ const blogReducer = (action, state) => {
 
 export default ({ children }) => {
 
-  // const [state, dispatch] = usePersistedReducer(blogReducer, initialState)
-
-  const [state, dispatch] = useReducer(blogReducer, initialState)
+  const [state, dispatch] = usePersistedReducer(blogReducer, initialState)
 
   // #TODO Create Faux user
-  
   // #TODO Create Filter options
-  // #TODO Create order function
+  // #TODO Create Order function
 
-
-  // #TODO Pass data
   const createPost = useCallback(({
     header,
     body,
@@ -63,7 +67,6 @@ export default ({ children }) => {
     dispatch({
       type: CREATE,
       payload: {
-        publishedDate: "", // #TODO Pass date here
         header,
         body,
         cathegory
@@ -86,14 +89,6 @@ export default ({ children }) => {
     dispatch({
       type: UPDATE,
       payload
-/*
-      payload: {
-        id,
-        header,
-        body,
-        cathegory
-      }
-*/
     })
   }, [])
 

@@ -10,13 +10,15 @@ export default _ => {
   const {state: posts} = useContext(BlogContext)
 
   // #TODO add sort
-
   // #TODO Add filter
 
   return (
     <>
       { _keys(posts).map( postId => (
-          <BlogPost {..._get(posts, postId)} />
+          <BlogPost
+            key={`post_${postId}`}
+            {..._get(posts, postId)}
+          />
         ))
       }
     </>

@@ -4,8 +4,9 @@ import { BrowserRouter } from "react-router-dom"
 import './index.css';
 import App from 'Scenes';
 import reportWebVitals from './reportWebVitals'
-import { ThemeProvider } from '@material-ui/core/styles'
-import { SlotProvider } from 'react-view-slot'
+import { ThemeProvider } from "@material-ui/core/styles"
+import { SlotProvider } from "react-view-slot"
+
 
 
 /* #TODO Provide theme */
