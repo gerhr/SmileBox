@@ -1,8 +1,10 @@
-import React from "react"
+import React, {
+  useState } from "react"
 import Box from "@material-ui/core/Box"
 import Avatar from "@material-ui/core/Avatar"
 import Typography from "@material-ui/core/Typography"
 import Divider from "@material-ui/core/Divider"
+import Button from "@material-ui/core/Button"
 import prettyMs from "pretty-ms"
 import useStyles from "./styles"
 import Chip from "@material-ui/core/Chip"
@@ -14,9 +16,13 @@ export default ({
   cathegory,
   lastChangeDate,
   body,
-  publishedDate
+  publishedDate,
+  onEdit,
+  onDelete
 }) => {
   const classes = useStyles()
+
+  const [deletePromptOpen, setDeletePromptOpen] = useState()
 
   return (
     <Box className={classes.root}>
@@ -53,7 +59,21 @@ export default ({
       <Divider />
 
       <Box className={classes.toolbar}>
-        tools
+        <Button
+            className={classes.tool}
+            onClick={onDelete}
+        >
+          Delete
+        </Button>
+
+{/*         <Button
+            className={classes.tool}
+            variant="contained"
+            onClick={onEdit}
+            // onClick={_ => { setDeletePromptOpen(_ => true) }}
+        >
+          Edit
+        </Button> */}
       </Box>
 
     </Box>

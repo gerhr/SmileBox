@@ -37,6 +37,9 @@ const useStyles = makeStyles(theme => ({
     "flex-direction": "row",
     "justify-content": "flex-end",
     "padding": theme.spacing(2, 0, 3, 0)
+  },
+  tool: {
+    "margin-left": theme.spacing(2)
   }
 }))
 

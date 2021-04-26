@@ -4,6 +4,9 @@ import faker from "faker"
 import createPersistedReducer from "use-persisted-reducer"
 import BlogContext from "./context"
 import uniqid from "uniqid"
+import _remove from "lodash/remove"
+import _keys from "lodash/keys"
+import _pick from "lodash/pick"
 import {
   CREATE,
   UPDATE,
@@ -36,14 +39,15 @@ const blogReducer = (state, { type, payload }) => {
         // Merge and update post
 
         console.log("update post")
+
         return state
 
       case DELETE:
-        // #TODO Pick post by ID
-        // #TODO Delete it
+        const shiftedPosts = _remove(_keys(state), n => n !== payload.id)
 
-        console.log("delete post")
-        return state
+        const result = _pick(state, shiftedPosts)
+
+        return result
 
       default:
         throw new Error();
