@@ -8,6 +8,8 @@ import Box from "@material-ui/core/Box"
 import _keys from "lodash/keys"
 import _get from "lodash/get"
 import _pickBy from "lodash/pickBy"
+import _sortBy from "lodash/sortBy"
+import _reverse from "lodash/reverse"
 import { Typography } from "@material-ui/core"
 
 
@@ -16,7 +18,8 @@ export default _ => {
     state: posts,
     onDelete,
     setEditPostId,
-    selectedCathegory } = useContext(BlogContext)
+    selectedCathegory,
+    reverseChronology } = useContext(BlogContext)
 
   const filteredPost = useMemo(_ => {
 
@@ -35,6 +38,16 @@ export default _ => {
     }
   }, [selectedCathegory, posts])
 
+  const sortedPosts = useMemo(_ => {
+      const sortedQueue = _sortBy(_keys(filteredPost), postId => {
+          const post = _get(posts, postId)
+          return post.lastChangeDate ? post.lastChangeDate : post.publishedDate
+        })
+
+      return reverseChronology ? _reverse(sortedQueue) : sortedQueue
+
+  }, [reverseChronology, filteredPost])
+
   const handleDelete = useCallback(id => _ => {
     onDelete({ id })
   }, [onDelete])
@@ -45,8 +58,8 @@ export default _ => {
 
   return (
     <>
-      { _keys(filteredPost).length > 0 ?
-        _keys(filteredPost).map( postId => (
+      { sortedPosts.length > 0 ?
+        sortedPosts.map( postId => (
           <BlogPost
             onDelete={handleDelete(postId)}
             onEdit={handleUpdateClick(postId)}

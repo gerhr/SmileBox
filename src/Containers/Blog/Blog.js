@@ -70,8 +70,7 @@ export default ({ children }) => {
 
   const [selectedCathegory, setSelectedCathegory] = useState("all")
 
-  // #TODO Create Filter options
-  // #TODO Create Order function
+  const [reverseChronology, setReverseChronology] = useState(false)
 
   const createPost = useCallback(({
     header,
@@ -117,7 +116,9 @@ export default ({ children }) => {
         editPostId,
         setEditPostId,
         selectedCathegory,
-        setSelectedCathegory
+        setSelectedCathegory,
+        reverseChronology,
+        setReverseChronology
       }}
     >
       { children }

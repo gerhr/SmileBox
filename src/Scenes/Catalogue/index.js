@@ -4,7 +4,9 @@ import Typography from "@material-ui/core/Typography"
 import { HeaderPlug } from "Components/Layout"
 import { Route } from "react-router-dom"
 import Bar from "Components/Bar"
-import { BlogList, FilterControl } from "Containers/Blog"
+import { BlogList,
+  FilterControl,
+  SortControl } from "Containers/Blog"
 
 
 const CatalogueRoute = ({ path }) => (
@@ -21,6 +23,8 @@ const CatalogueRoute = ({ path }) => (
         <Grid container>
           <Grid item sm={12}>
             <Bar>
+              <SortControl />
+
               <FilterControl />
             </Bar>
           </Grid>

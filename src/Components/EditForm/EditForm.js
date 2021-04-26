@@ -87,7 +87,6 @@ const AddButton = ({
 
   return (
     <>
-    { isEditorOpen &&
       <Modal
         disableAutoFocus
         className={classes.modal}
@@ -148,7 +147,7 @@ const AddButton = ({
           </Paper>
         </Fade>
       </Modal>
-      }
+
       <Zoom
           in={!isEditorOpen}
           timeout={transitionDuration}
