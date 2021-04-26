@@ -1,17 +1,47 @@
 import React, {
-  useContext } from "react"
+  useContext,
+  useCallback } from "react"
 import EditForm from "Components/EditForm"
+import _pick from "lodash/pick"
+import _get from "lodash/get"
 import BlogContext from "./context"
 import { CATHEGORIES } from "./constants"
 
 
 const NewPostForm = _ => {
-  const { onCreate } = useContext(BlogContext)
+  const {
+    onCreate,
+    onUpdate,
+    editPostId,
+    state,
+    setEditPostId } = useContext(BlogContext)
+
+  const handleClose = useCallback(_ => {
+    setEditPostId(_ => null)
+  },[editPostId])
+
+  const editablePost = editPostId !== null ? _get(state, editPostId) : {}
+
+  const handleSave = useCallback(payload => {
+    if (editPostId) {
+      onUpdate({
+        id: editPostId,
+        ...payload
+      })
+    } else {
+      onCreate(payload)
+    }
+
+    handleClose()
+  },[onUpdate, onCreate, editPostId])
 
   return (
     <EditForm
-      onSave={onCreate}
-      cathegories={CATHEGORIES}
+        open={editPostId !== null}
+        onClose={handleClose}
+        onSave={handleSave}
+        cathegories={CATHEGORIES}
+        {...editablePost}
     />
   )
 }

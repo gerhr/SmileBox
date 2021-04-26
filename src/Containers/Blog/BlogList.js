@@ -10,8 +10,10 @@ import { Typography } from "@material-ui/core"
 
 
 export default _ => {
-  const {state: posts} = useContext(BlogContext)
-  const { onDelete } = useContext(BlogContext)
+  const {
+    state: posts,
+    onDelete,
+    setEditPostId } = useContext(BlogContext)
 
   // #TODO add sort
   // #TODO Add filter
@@ -20,13 +22,17 @@ export default _ => {
     onDelete({ id })
   }, [onDelete])
 
+  const handleUpdateClick = useCallback(id => _ => {
+    setEditPostId(id)
+  }, [setEditPostId])
+
   return (
     <>
       { _keys(posts).length > 0 ?
         _keys(posts).map( postId => (
           <BlogPost
             onDelete={handleDelete(postId)}
-            // onEdit={handleUpdate}
+            onEdit={handleUpdateClick(postId)}
             key={`post_${postId}`}
             {..._get(posts, postId)}
           />

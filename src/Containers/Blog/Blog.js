@@ -1,5 +1,6 @@
 import React, {
-  useCallback } from "react"
+  useCallback,
+  useState } from "react"
 import faker from "faker"
 import createPersistedReducer from "use-persisted-reducer"
 import BlogContext from "./context"
@@ -7,6 +8,7 @@ import uniqid from "uniqid"
 import _remove from "lodash/remove"
 import _keys from "lodash/keys"
 import _pick from "lodash/pick"
+import _get from "lodash/get"
 import {
   CREATE,
   UPDATE,
@@ -35,12 +37,17 @@ const blogReducer = (state, { type, payload }) => {
         };
 
       case UPDATE:
-        // #TODO Pick post by id
-        // Merge and update post
 
-        console.log("update post")
-
-        return state
+        return {
+          ...state,
+          [payload.id]: {
+            ..._get(state, payload.id),
+            header: payload.header,
+            body: payload.body,
+            cathegory: payload.cathegory,
+            lastChangeDate: Date.now()
+          }
+        }
 
       case DELETE:
         const shiftedPosts = _remove(_keys(state), n => n !== payload.id)
@@ -59,7 +66,8 @@ export default ({ children }) => {
 
   const [state, dispatch] = usePersistedReducer(blogReducer, initialState)
 
-  // #TODO Create Faux user
+  const [editPostId, setEditPostId] = useState(null)
+
   // #TODO Create Filter options
   // #TODO Create Order function
 
@@ -103,6 +111,8 @@ export default ({ children }) => {
         onCreate: createPost,
         onDelete: deletePost,
         onUpdate: updatePost,
+        editPostId,
+        setEditPostId,
         state
       }}
     >

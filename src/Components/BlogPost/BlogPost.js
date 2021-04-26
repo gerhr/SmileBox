@@ -1,5 +1,5 @@
-import React, {
-  useState } from "react"
+import React from "react"
+import ClampLines from "react-clamp-lines"
 import Box from "@material-ui/core/Box"
 import Avatar from "@material-ui/core/Avatar"
 import Typography from "@material-ui/core/Typography"
@@ -22,8 +22,6 @@ export default ({
 }) => {
   const classes = useStyles()
 
-  const [deletePromptOpen, setDeletePromptOpen] = useState()
-
   return (
     <Box className={classes.root}>
 
@@ -33,7 +31,13 @@ export default ({
 
           <Typography className={classes.userName} variant="subtitle">{author}</Typography>
 
-          <Typography className={classes.date} variant="body2">{prettyMs(publishedDate)}</Typography>
+          <Typography className={classes.date} variant="body2">
+            { lastChangeDate ?
+              <>Changed: {prettyMs(Date.now() - lastChangeDate)}</>
+              : <>Created: {prettyMs(Date.now() - publishedDate)}</>
+            }
+          </Typography>
+
         </Box>
 
         { cathegory &&
@@ -46,13 +50,14 @@ export default ({
 
       <Typography className={classes.header} variant="h4">{header}</Typography>
 
-      { lastChangeDate &&
-        <Typography variant="body2">{prettyMs(lastChangeDate)}</Typography>
-      }
-
       <Box className={classes.body}>
         <Typography variant="body1">
-          { body }
+          <ClampLines
+            lines={3}
+            text={body}
+            buttons={false}
+            ellipsis="..."
+          />
         </Typography>
       </Box>
 
@@ -66,14 +71,13 @@ export default ({
           Delete
         </Button>
 
-{/*         <Button
+        <Button
             className={classes.tool}
             variant="contained"
             onClick={onEdit}
-            // onClick={_ => { setDeletePromptOpen(_ => true) }}
         >
           Edit
-        </Button> */}
+        </Button>
       </Box>
 
     </Box>
