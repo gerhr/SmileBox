@@ -68,6 +68,8 @@ export default ({ children }) => {
 
   const [editPostId, setEditPostId] = useState(null)
 
+  const [selectedCathegory, setSelectedCathegory] = useState("all")
+
   // #TODO Create Filter options
   // #TODO Create Order function
 
@@ -108,12 +110,14 @@ export default ({ children }) => {
   return (
     <BlogContext.Provider
       value={{
+        state,
         onCreate: createPost,
         onDelete: deletePost,
         onUpdate: updatePost,
         editPostId,
         setEditPostId,
-        state
+        selectedCathegory,
+        setSelectedCathegory
       }}
     >
       { children }

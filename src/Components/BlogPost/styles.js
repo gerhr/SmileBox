@@ -4,7 +4,8 @@ import { makeStyles } from "@material-ui/core/styles"
 
 const useStyles = makeStyles(theme => ({
   root: {
-    "padding": theme.spacing(3, 2, 5, 2)
+    "margin": theme.spacing(3, 0, 4, 0),
+    "padding": theme.spacing(3, 2, 0, 2)
   },
   bar: {
     "display": "flex",

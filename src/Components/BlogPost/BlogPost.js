@@ -1,6 +1,7 @@
 import React from "react"
 import ClampLines from "react-clamp-lines"
 import Box from "@material-ui/core/Box"
+import Paper from "@material-ui/core/Paper"
 import Avatar from "@material-ui/core/Avatar"
 import Typography from "@material-ui/core/Typography"
 import Divider from "@material-ui/core/Divider"
@@ -23,7 +24,7 @@ export default ({
   const classes = useStyles()
 
   return (
-    <Box className={classes.root}>
+    <Paper className={classes.root}>
 
       <Box className={classes.bar}>
         <Box className={classes.userProfile}>
@@ -80,6 +81,6 @@ export default ({
         </Button>
       </Box>
 
-    </Box>
+    </Paper>
   )
 }

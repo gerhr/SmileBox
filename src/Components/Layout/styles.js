@@ -4,7 +4,8 @@ import { makeStyles } from "@material-ui/core/styles"
 const useStyles = makeStyles(theme => ({
     root: {
       "min-height": "400px",
-      "height": "100"
+      "height": "100",
+      "background-color": theme.palette.background.default
     },
     appbar: {
       "padding": theme.spacing(3, 5),
