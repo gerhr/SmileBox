@@ -3,7 +3,8 @@ import React, {
   useCallback } from "react"
 import Filter from "Components/Filter"
 import BlogContext from "./context"
-import { CATHEGORIES } from "./constants"
+import { CATHEGORIES,
+  DEFAULT_CATHEGORY } from "./constants"
 
 const FilterBar = _ => {
   const {
@@ -17,6 +18,7 @@ const FilterBar = _ => {
   return (
     <>
       <Filter
+        defaultValue={DEFAULT_CATHEGORY}
         cathegories={CATHEGORIES}
         seelectedCathegory={selectedCathegory}
         onChange={handleChange}

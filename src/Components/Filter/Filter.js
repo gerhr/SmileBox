@@ -15,7 +15,8 @@ const useStyles = makeStyles(_ => ({
 const Filter = ({
   cathegories,
   selectedCathegory,
-  onChange
+  onChange,
+  defaultValue
 }) => {
   const classes = useStyles()
 
@@ -28,7 +29,7 @@ const Filter = ({
       classes={{
         root: classes.root
       }}
-      defaultValue={"all"}
+      defaultValue={defaultValue}
       value={selectedCathegory}
       onChange={handleChange}
     >

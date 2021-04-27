@@ -11,3 +11,5 @@ export const CATHEGORIES = [
   "Маркетинг",
   "Научпоп"
 ]
+
+export const DEFAULT_CATHEGORY = "all"

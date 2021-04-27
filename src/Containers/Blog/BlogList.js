@@ -4,13 +4,13 @@ import React, {
   useMemo } from "react"
 import BlogPost from "Components/BlogPost"
 import BlogContext from "./context"
-import Box from "@material-ui/core/Box"
 import _keys from "lodash/keys"
 import _get from "lodash/get"
 import _pickBy from "lodash/pickBy"
 import _sortBy from "lodash/sortBy"
 import _reverse from "lodash/reverse"
-import { Typography } from "@material-ui/core"
+import ListPlaceholder from "Components/ListPlaceholder"
+import { DEFAULT_CATHEGORY } from "./constants"
 
 
 export default _ => {
@@ -23,14 +23,10 @@ export default _ => {
 
   const filteredPost = useMemo(_ => {
 
-    if (selectedCathegory !== "all") {
-      console.log(selectedCathegory)
-
+    if (selectedCathegory !== DEFAULT_CATHEGORY) {
       const result = _pickBy(posts, post => 
         post.cathegory === selectedCathegory
       )
-
-      console.log(result)
 
       return result
     } else {
@@ -67,9 +63,7 @@ export default _ => {
             {..._get(posts, postId)}
           />
         ))
-        : <Box>
-            <Typography>Start with first post</Typography>
-          </Box>
+        : <ListPlaceholder />
        }
     </>
   )

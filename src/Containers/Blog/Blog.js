@@ -12,7 +12,8 @@ import _get from "lodash/get"
 import {
   CREATE,
   UPDATE,
-  DELETE } from "./constants"
+  DELETE,
+  DEFAULT_CATHEGORY } from "./constants"
 import initialState from "./initialState"
 
 
@@ -68,7 +69,7 @@ export default ({ children }) => {
 
   const [editPostId, setEditPostId] = useState(null)
 
-  const [selectedCathegory, setSelectedCathegory] = useState("all")
+  const [selectedCathegory, setSelectedCathegory] = useState(DEFAULT_CATHEGORY)
 
   const [reverseChronology, setReverseChronology] = useState(false)
 

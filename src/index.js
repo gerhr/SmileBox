@@ -8,8 +8,6 @@ import { ThemeProvider } from "@material-ui/core/styles"
 import { SlotProvider } from "react-view-slot"
 
 
-
-/* #TODO Provide theme */
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider>

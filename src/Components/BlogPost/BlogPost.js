@@ -6,9 +6,10 @@ import Avatar from "@material-ui/core/Avatar"
 import Typography from "@material-ui/core/Typography"
 import Divider from "@material-ui/core/Divider"
 import Button from "@material-ui/core/Button"
-import prettyMs from "pretty-ms"
-import useStyles from "./styles"
 import Chip from "@material-ui/core/Chip"
+import prettyMs from "pretty-ms"
+import PromptButton from "Components/PromptButton"
+import useStyles from "./styles"
 
 
 export default ({
@@ -65,12 +66,17 @@ export default ({
       <Divider />
 
       <Box className={classes.toolbar}>
-        <Button
+        <PromptButton
             className={classes.tool}
+            variant="contained"
             onClick={onDelete}
-        >
-          Delete
-        </Button>
+            label={"Delete"}
+            promptText={
+              <>
+                Delete this post?
+              </>
+            }
+        />
 
         <Button
             className={classes.tool}
