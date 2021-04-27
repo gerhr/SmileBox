@@ -12,7 +12,7 @@ import PromptButton from "Components/PromptButton"
 import useStyles from "./styles"
 
 
-export default ({
+const BlogPost = ({
   header,
   author,
   cathegory,
@@ -73,7 +73,9 @@ export default ({
             label={"Delete"}
             promptText={
               <>
-                Delete this post?
+                U sure want to delete?
+                
+                <Typography variant="h5">{header}</Typography>
               </>
             }
         />
@@ -90,3 +92,6 @@ export default ({
     </Paper>
   )
 }
+
+
+export default BlogPost

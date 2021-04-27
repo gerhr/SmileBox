@@ -27,7 +27,7 @@ const ListPlaceholder = _ => {
 
   return (
     <Box className={classes.root}>
-      <img src={placeholder} className={classes.image}/>
+      <img src={placeholder} className={classes.image} alt=""/>
       <Typography variant="h5" className={classes.text}>
         Got NOTHING here!
       </Typography>      

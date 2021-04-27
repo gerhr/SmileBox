@@ -13,7 +13,7 @@ import ListPlaceholder from "Components/ListPlaceholder"
 import { DEFAULT_CATHEGORY } from "./constants"
 
 
-export default _ => {
+const BlogList = _ => {
   const {
     state: posts,
     onDelete,
@@ -42,7 +42,7 @@ export default _ => {
 
       return reverseChronology ? _reverse(sortedQueue) : sortedQueue
 
-  }, [reverseChronology, filteredPost])
+  }, [reverseChronology, filteredPost, posts])
 
   const handleDelete = useCallback(id => _ => {
     onDelete({ id })
@@ -68,3 +68,6 @@ export default _ => {
     </>
   )
 }
+
+
+export default BlogList

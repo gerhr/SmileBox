@@ -57,7 +57,7 @@ const AddButton = ({
     setIsEditorOpen(_ => !isEditorOpen)
 
     isEditorOpen && onClose()
-  }, [isEditorOpen])
+  }, [isEditorOpen, onClose])
 
   const handleHeaderChange = useCallback(event => {
     setState({
@@ -83,7 +83,7 @@ const AddButton = ({
   const handleSave = useCallback(_ => {
     onSave && onSave(state)
     handleStateChange()
-  }, [state])
+  }, [state, handleStateChange, onSave])
 
   return (
     <>

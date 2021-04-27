@@ -2,21 +2,23 @@ import React, {
   useState,
   useCallback,
    } from "react"
-import Modal from "@material-ui/core/Modal"
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
 import Button from "@material-ui/core/Button"
-import Paper from "@material-ui/core/Paper"
-import Box from "@material-ui/core/Box"
 import { makeStyles } from "@material-ui/core/styles"
+import Slide from '@material-ui/core/Slide';
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 
 
 const useStyles = makeStyles(theme => ({
   root: {},
   modal: {
     "outline": 0,
-    "top": "42%",
-    "left": "50%",
-    "transform": "translate(-42%, -50%)",
-    "position": "absolute",
     "width": "280px",
     "background-color": theme.palette.background.paper,
     "box-shadow": theme.shadows[5],
@@ -60,19 +62,25 @@ const PromptButton = ({
         { label }
       </Button>
 
-      <Modal
+      <Dialog
+        classes={{
+          paper: classes.modal
+        }}
         disableAutoFocus
         open={promptOpen}
         onClose={handleOpen}
+        TransitionComponent={Transition}
         closeAfterTransition
         disableBackdropClick
       >
-        <Paper className={classes.modal}>
-          <Box className={classes.content}>
-            { promptText }
-          </Box>
+          <DialogContent>
+            <DialogContentText>
+              { promptText }
+            </DialogContentText>
+          </DialogContent>
 
-          <Box className={classes.toolbar}>
+
+          <DialogActions>
             <Button
                 className={classes.button}
                 onClick={handleOpen}
@@ -88,10 +96,8 @@ const PromptButton = ({
             >
               Submit
             </Button>
-          </Box>
-        </Paper>
-
-      </Modal>
+          </DialogActions>
+      </Dialog>
 
     </>
   )

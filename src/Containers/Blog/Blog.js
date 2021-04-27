@@ -63,7 +63,7 @@ const blogReducer = (state, { type, payload }) => {
 }
 
 
-export default ({ children }) => {
+const Blog = ({ children }) => {
 
   const [state, dispatch] = usePersistedReducer(blogReducer, initialState)
 
@@ -86,7 +86,7 @@ export default ({ children }) => {
         cathegory
       }
     })
-  }, [])
+  }, [dispatch])
 
   const deletePost = useCallback(({
       id
@@ -97,15 +97,14 @@ export default ({ children }) => {
           id
         }
       })
-    }, [])
+    }, [dispatch])
 
   const updatePost = useCallback((payload) => {
     dispatch({
       type: UPDATE,
       payload
     })
-  }, [])
-
+  }, [dispatch])
 
   return (
     <BlogContext.Provider
@@ -126,3 +125,6 @@ export default ({ children }) => {
     </BlogContext.Provider>
   )
 }
+
+
+export default Blog

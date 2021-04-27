@@ -4,7 +4,7 @@ import Typography from "@material-ui/core/Typography"
 import { HeaderPlug } from "Components/Layout"
 
 
-export default ({ path }) => (
+const IpsumRoute = ({ path }) => (
   <Route path={path}
     render={_ => (<>
       <HeaderPlug>
@@ -15,3 +15,6 @@ export default ({ path }) => (
     </>)}
   />
 )
+
+
+export default IpsumRoute

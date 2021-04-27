@@ -2,7 +2,6 @@ import React, {
   useContext,
   useCallback } from "react"
 import EditForm from "Components/EditForm"
-import _pick from "lodash/pick"
 import _get from "lodash/get"
 import BlogContext from "./context"
 import { CATHEGORIES } from "./constants"
@@ -18,7 +17,7 @@ const NewPostForm = _ => {
 
   const handleClose = useCallback(_ => {
     setEditPostId(_ => null)
-  },[editPostId])
+  },[setEditPostId])
 
   const editablePost = editPostId !== null ? _get(state, editPostId) : {}
 
@@ -33,7 +32,7 @@ const NewPostForm = _ => {
     }
 
     handleClose()
-  },[onUpdate, onCreate, editPostId])
+  },[onUpdate, onCreate, editPostId, handleClose])
 
   return (
     <EditForm
